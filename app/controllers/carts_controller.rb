@@ -67,6 +67,9 @@ class CartsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
       @cart = Cart.find(params[:id])
+      if @cart.line_items.empty? then
+        destroy
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
