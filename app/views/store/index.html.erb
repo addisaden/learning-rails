@@ -3,6 +3,9 @@
 <% end %>
 
 <h1>Your Pragmatic Catalog</h1>
+<% if session[:counter] >= 5 %>
+  <p>Viewed <%= pluralize(session[:counter], 'time', 'times') %>.</p>
+<% end %>
 
 <% cache ['store', Product.latest] do %>
   <% @products.each do |product| %>
